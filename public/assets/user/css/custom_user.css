@@ -1,0 +1,512 @@
+/* --- NAVBAR STYLING --- */
+body{
+    overflow-x: hidden;
+}
+#hamburgerBtn{
+    z-index : 1500;
+    top: 40px;
+    right: 30px;
+}
+.navbar-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    padding: 10px 20px;
+    transition: all 0.4s ease;
+    position: absolute;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar-custom::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255, 240, 207, 0.8); */
+    /* Warna #fff0cf dengan opacity */
+    z-index: -1;
+    /* biar di belakang teks */
+}
+
+.navbar-fixed::before {
+    background-color: rgba(255, 240, 207, 0.665);
+    /* lebih solid pas scroll */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Animasi smooth pas jadi fixed */
+.navbar-fixed {
+    position: fixed;
+    animation: fadeInDown 0.4s ease forwards;
+    width: 100vw;
+}
+
+@keyframes fadeInDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* --- HAMBURGER ANIMATION --- */
+.hamburger {
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hamburger span {
+    background: #8c2f1f;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 9px;
+}
+
+.hamburger span:nth-child(3) {
+    bottom: 0;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 9px;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 9px;
+}
+
+/* Icon search */
+.search-icon {
+    font-size: 18px;
+    color: #8c2f1f;
+    cursor: pointer;
+}
+
+
+
+/* Overlay blur */
+#overlay-user-custom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    z-index: 1040;
+}
+
+#overlay-user-custom.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+#sidebar-user-custom {
+    position: fixed;
+    top: 0;
+    right: -600px;
+    width: 600px;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(251, 192, 45, 0.9), rgba(255, 152, 0, 0.9));
+    clip-path: polygon(65% 0, 100% 0, 100% 100%, 0% 100%);
+    transition: all 0.4s ease;
+    z-index: 1050;
+    color: #5c2b00;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-weight: bold;
+}
+
+#sidebar-user-custom::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: white;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+#sidebar-user-custom.active {
+    right: 0;
+}
+
+/* Tombol buka */
+.open-btn-user-custom {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
+}
+
+/* Tombol tutup */
+.close-btn-user-custom {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #5c2b00;
+}
+
+/* Menu List */
+.menu-links-user-custom {
+    display: flex;
+    justify-content: flex-end;
+    align-items: end;
+    flex-direction: column;
+}
+
+.menu-links-user-custom a {
+    display: block;
+    margin: 1.5rem 0.5rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    z-index: 1;
+    color: #ba6c27;
+}
+
+.menu-links-user-custom a:hover {
+    text-decoration: underline;
+    color: #451915;
+}
+
+.menu-links-user-custom a.active {
+    color: #451915;
+}
+
+/* Footer Info */
+.sidebar-footer-user-custom {
+    position: absolute;
+    bottom: 20px;
+    font-size: 0.9rem;
+    text-align: left;
+}
+.sidebar-footer-user-custom p{
+    text-align: end;
+}
+
+.sidebar-footer-user-custom .whatsapp-user-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ff9800;
+    border-radius: 50%;
+    padding: 10px;
+    color: #5c2b00;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+}
+
+.sidebar-footer-user-custom .whatsapp-user-custom i {
+    font-size: 35px;
+}
+
+.menu-stand-user-custom {
+    background-image: url('../ornamen/sidebar.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 300px;
+    height: 100%;
+}
+
+
+
+
+
+/* BANNER */
+.banner-slider {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.carousel-item {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(235, 211, 169, 0.65);
+    z-index: 1;
+}
+
+.carousel-caption {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-30%);
+    text-align: center;
+}
+
+.banner-title {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.btn-explore {
+    background: none;
+    border: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #451815;
+    border-bottom: 1px solid #451815;
+    padding: 5px 0;
+    transition: 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.btn-explore:hover {
+    color: #3c1f14;
+    border-color: #3c1f14;
+}
+
+/* Aktifkan animasi saat slide aktif */
+.carousel-item.active .banner-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.carousel-item.active .btn-explore {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+
+
+
+
+/* PROJECT */
+
+/* ==== CARD STYLE (prefixed) ==== */
+.user-custom-property-card {
+    background-color: #fae6b9;
+    border-radius: 20px;
+    text-align: center;
+    padding: 1rem;
+    transition: all .3s ease-in-out;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .06);
+}
+
+.user-custom-property-card img {
+    border-radius: 15px;
+    width: 100%;
+    object-fit: cover
+}
+
+.user-custom-property-card h5 {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+    color: #5c2b1f;
+    margin-top: .75rem
+}
+
+.user-custom-price {
+    font-weight: 800;
+    color: #5c2b1f;
+    font-size: 1rem
+}
+
+.user-custom-status {
+    font-size: .9rem;
+    color: #444
+}
+
+.user-custom-icon-text {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: .9rem;
+    font-weight: 700;
+    color: #5c2b1f
+}
+
+/* ==== MULTI ITEM LAYOUT ==== */
+#propertyCarousel .carousel-item {
+    padding: 10px 0;
+}
+
+/* bikin item aktif/bergerak jadi flex supaya 3/2/1 sejajar */
+#propertyCarousel .carousel-item.active,
+#propertyCarousel .carousel-item-next,
+#propertyCarousel .carousel-item-prev {
+    display: flex;
+}
+
+/* kolom tiap kartu (kita atur via flex-basis biar responsif) */
+#propertyCarousel .user-custom-slide-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
+
+@media (min-width:768px) {
+    #propertyCarousel .user-custom-slide-col {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width:992px) {
+    #propertyCarousel .user-custom-slide-col {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+}
+
+/* tombol panah custom (pakai image sendiri) */
+#propertyCarousel .carousel-control-prev-icon,
+#propertyCarousel .carousel-control-next-icon {
+    display: none;
+}
+
+/* hide default */
+#propertyCarousel .carousel-control-prev,
+#propertyCarousel .carousel-control-next {
+    width: auto;
+    opacity: 1;
+    /* biar selalu kelihatan */
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .15));
+}
+
+.user-custom-arrow {
+    width: 38px;
+    height: auto;
+    user-select: none;
+}
+
+.facility-border{
+    border-radius: 100%;
+    padding: 3px 5px;
+    border: 1px solid var(--bs-primary);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+}
+.facility-display{
+    background-repeat: no-repeat ;
+    background-position: center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    
+    
+}
+
+.text-dark-brown{
+    color : #451815 !important;
+}
+
+.overlay-sold{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fff0cf99;
+}
+
+.over-hidden{
+    overflow: hidden;
+}
+
+.text-light-brown{
+    color : #ba6c27 !important;
+}
+.facility-plus{
+    background-color : #e4e4e4;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+blockquote {
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #333;
+    border-left: 6px solid #6c63ff;
+    /* warna garis kiri */
+    background: #f8f9ff;
+    /* warna background lembut */
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+blockquote::before {
+    content: "“";
+    font-size: 3rem;
+    color: #6c63ff;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+    opacity: 0.3;
+}
+
+blockquote:hover {
+    background: #eef0ff;
+    border-left-color: #4b44cc;
+    transform: translateX(5px);
+}
+
+blockquote footer {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: right;
+}
