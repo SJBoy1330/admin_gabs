@@ -1,3 +1,7 @@
+@php
+    $segment1 = request()->segment(1);
+    $segment2 = request()->segment(2);
+@endphp
 <!DOCTYPE html>
 <html lang="en">
     @include('partials.admin.head')
@@ -32,10 +36,12 @@
 				@include('partials.admin.header')
 				<!--begin::Wrapper-->
 				<div id="kt_content_container" class="d-flex flex-column-fluid align-items-stretch container-xxl">
+					@if($segment1 != 'insert' || $segment2 != 'product')
 					@include('partials.admin.sidebar')
+					@endif
 					<div class="wrapper d-flex flex-column flex-row-fluid mt-5 mt-lg-10" id="kt_wrapper">
 						<!--begin::Content-->
-						<div class="content flex-column-fluid px-3" id="kt_content">
+						<div class="content flex-column-fluid" id="kt_content">
 							@if(isset($title))
 							 <!--begin::Toolbar-->
 							<div class="toolbar d-flex flex-stack flex-wrap mb-5 mb-lg-7" id="kt_toolbar">

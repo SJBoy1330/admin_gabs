@@ -10,7 +10,7 @@
     <div class="menu menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-6 menu-rounded w-100" id="#kt_aside_menu" data-kt-menu="true">
     <!--begin::Menu item-->
     <div class="menu-item">
-        <a href="index.html" class="menu-link active">
+        <a href="{{ route('dashboard') }}" class="menu-link {{ (!$segment1 || $segment1 == 'dashboard') ? 'active' : ''}}">
         <span class="menu-title">Beranda</span>
         </a>
     </div>
@@ -37,7 +37,7 @@
     </div>
     <!--end::Menu item-->
     <!--begin::Heading-->
-    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+    <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{ ($segment1 == 'master') ? 'hover show' : '' }}">
         <!--begin:Menu link-->
         <span class="menu-link py-2">
         <span class="menu-title">Produk</span>
@@ -45,7 +45,7 @@
         </span>
         <!--end:Menu link-->
         <!--begin:Menu sub-->
-        <div class="menu-sub menu-sub-accordion" kt-hidden-height="163" style="display: none; overflow: hidden;">
+        <div class="menu-sub menu-sub-accordion {{ ($segment1 == 'master') ? 'show' : '' }}" kt-hidden-height="163" style="{{ ($segment1 == 'master') ? '' : 'display: none; overflow: hidden;' }}">
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
@@ -163,7 +163,7 @@
         <!--end:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="produk-wallet.html">
+            <a class="menu-link py-2 {{ ($segment1 == 'master' && $segment2 == 'product') ? 'active' : '' }}" href="{{ route('master.product') }}">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>

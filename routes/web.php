@@ -53,6 +53,8 @@ Route::middleware(DashboardRoleAccess::class)->group(function () {
         Route::get('/master/location', 'location')->name('master.location');
         Route::get('/master/unit', 'unit')->name('master.unit');
         Route::get('/master/facility', 'facility')->name('master.facility');
+         Route::get('/master/product', 'product')->name('master.product');
+         Route::get('/insert/product', 'insert_product')->name('insert.product');
     });
     // CMS CONTROLLER
     Route::controller(CmsController::class)->group(function () {

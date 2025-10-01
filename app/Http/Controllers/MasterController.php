@@ -27,6 +27,20 @@ class MasterController extends Controller
         return view('admin.master.user', $data);
     }
 
+    public function product()
+    {
+        $data['title'] = 'Master Produk';
+        $data['subtitle'] = 'Manajemen Produk';
+        return view('admin.master.product', $data);
+    }
+
+    public function insert_product()
+    {
+        $data['title'] = 'Tambah Produk';
+        $data['subtitle'] = 'Tambah Produk';
+        return view('admin.master.insert_product', $data);
+    }
+
      public function location()
     {
         $data['title'] = 'Manajemen Lokasi';
