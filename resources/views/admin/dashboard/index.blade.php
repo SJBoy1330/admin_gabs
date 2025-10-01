@@ -13,27 +13,6 @@
 <!--begin::Container-->
 <div class="container-xxl" id="kt_content_container">
 	<!--begin::Row-->
-
-    <div class="row gx-5 gx-xl-10 mb-xl-10">
-         <!--begin::Col-->
-        <div class="col-md-12 col-lg-12 col-xl-12 col-xxl-12 mb-4">
-        <!--begin::Card widget 16-->
-        <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center border-0 h-md-100 mb-3 mb-xl-6 shadow-sm">
-            <!--begin::Card body-->
-            <div class="card-body d-flex justify-content-center py-7 flex-column">
-                 <!--begin::Amount-->
-                <div class="fs-1 fw-bold text-dark me-2 lh-1 ls-n2"><i class="fa-solid {{ (salamWaktu()->dark == true) ? 'fa-cloud-moon' : 'fa-cloud-sun' }}"></i> {{ salamWaktu()->message }} <span class="text-primary">{{ session(config('session.prefix') . '_name') }}</span></div>
-                <!--end::Amount-->
-                <span class="text-dark opacity-50 pt-1 mt-3 fw-semibold fs-6">Selamat datang di Website Manajemen Konten</span>
-                <!--end::Subtitle-->
-            </div>
-            <!--end::Card body-->
-        </div>
-        <!--end::Card widget 16-->
-        </div>
-        <!--end::Col-->
-    </div>
-    
     <div class="row gx-5 gx-xl-10 mb-xl-10">
         <!--begin::Col-->
         <div class="col-md-4 col-lg-4 col-xl-4 col-xxl-4 mb-5">
