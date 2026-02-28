@@ -41,6 +41,20 @@ class MasterController extends Controller
         return view('admin.master.insert_product', $data);
     }
 
+    public function update_product()
+    {
+        $data['title'] = 'Tambah Produk';
+        $data['subtitle'] = 'Tambah Produk';
+        return view('admin.master.update_product', $data);
+    }
+
+    public function opname()
+    {
+        $data['title'] = 'Stock Opname';
+        $data['subtitle'] = 'TStock Opname';
+        return view('admin.master.opname', $data);
+    }
+
      public function location()
     {
         $data['title'] = 'Manajemen Lokasi';

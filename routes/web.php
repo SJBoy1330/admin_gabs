@@ -55,6 +55,8 @@ Route::middleware(DashboardRoleAccess::class)->group(function () {
         Route::get('/master/facility', 'facility')->name('master.facility');
          Route::get('/master/product', 'product')->name('master.product');
          Route::get('/insert/product', 'insert_product')->name('insert.product');
+         Route::get('/update/product', 'update_product')->name('update.product');
+         Route::get('/stock/opname', 'opname')->name('stock.opname');
     });
     // CMS CONTROLLER
     Route::controller(CmsController::class)->group(function () {
