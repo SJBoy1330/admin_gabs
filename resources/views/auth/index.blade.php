@@ -7,7 +7,7 @@
         <form method="POST" novalidate="novalidate" id="form_login" class="pt-7" action="{{ route('login.process') }}">
             @csrf
             <h1 class="text-primary">Masuk</h1>
-            <span class="mb-5 text-center">Sistem Manajemen CMS Website</span>
+            <span class="mb-5 text-center">Sistem Login Sementara Website</span>
 
             <div class="custom-auth-input-box fv-row">
                 <div class="position-relative">
