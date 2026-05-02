@@ -55,11 +55,82 @@ class MasterController extends Controller
         return view('admin.master.opname', $data);
     }
 
-     public function location()
+     public function brand()
     {
-        $data['title'] = 'Manajemen Lokasi';
-        $data['subtitle'] = 'Manajemen konten Lokasi';
-        return view('admin.master.location', $data);
+        $data['title'] = 'Manajemen Brand';
+        $data['subtitle'] = 'Manajemen logo dan partisi brand';
+        return view('admin.master.brand', $data);
+    }
+
+    public function induk_category()
+    {
+        $data['title'] = 'Manajemen Induk Kategori';
+        $data['subtitle'] = 'Halaman manajemen induk kategory untuk master produk';
+        return view('admin.master.induk_category', $data);
+    }
+
+    public function sub_category()
+    {
+        $data['title'] = 'Manajemen sub Kategori';
+        $data['subtitle'] = 'Halaman manajemen sub kategory untuk master produk';
+        return view('admin.master.sub_category', $data);
+    }
+
+    public function flash_sale()
+    {
+        $data['title'] = 'Manajemen promo flash sale';
+        $data['subtitle'] = 'Halaman manajemen promosi';
+        return view('admin.master.flash_sale', $data);
+    }
+
+    public function diskon()
+    {
+        $data['title'] = 'Manajemen Diskon';
+        $data['subtitle'] = 'Halaman manajemen diskon';
+        return view('admin.master.diskon', $data);
+    }
+
+    public function label()
+    {
+        $data['title'] = 'Manajemen Label';
+        $data['subtitle'] = 'Halaman manajemen label';
+        return view('admin.master.label', $data);
+    }
+
+
+    public function review()
+    {
+        $data['title'] = 'Manajemen Review Produk';
+        $data['subtitle'] = 'Halaman manajemen review produk';
+        return view('admin.master.review', $data);
+    }
+
+    public function ukuran()
+    {
+        $data['title'] = 'Manajemen Ukuran Produk';
+        $data['subtitle'] = 'Halaman manajemen ukuran produk';
+        return view('admin.master.ukuran', $data);
+    }
+
+    public function taggar()
+    {
+        $data['title'] = 'Manajemen Taggar Produk';
+        $data['subtitle'] = 'Halaman manajemen taggar produk';
+        return view('admin.master.taggar', $data);
+    }
+
+    public function fit()
+    {
+        $data['title'] = 'Manajemen Fit Label';
+        $data['subtitle'] = 'Halaman manajemen fit label produk';
+        return view('admin.master.fit', $data);
+    }
+
+    public function customer()
+    {
+        $data['title'] = 'Manajemen Customer';
+        $data['subtitle'] = 'Halaman manajemen Customer';
+        return view('admin.master.customer', $data);
     }
 
     public function unit()

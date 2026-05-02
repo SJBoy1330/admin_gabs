@@ -39,6 +39,10 @@ Route::middleware(DashboardRoleAccess::class)->group(function () {
     Route::controller(DashboardController::class)->group(function () {
         // DASHBOARD
         Route::get('/dashboard', 'index')->name('dashboard');
+        // ANTRIAN
+        Route::get('/antrian', 'antrian')->name('antrian');
+         // TRACKING
+        Route::get('/tracking', 'tracking')->name('tracking');
         // PROFILE
         Route::get('/profile', 'profile')->name('admin.profile');
         // CONTACT
@@ -53,10 +57,21 @@ Route::middleware(DashboardRoleAccess::class)->group(function () {
         Route::get('/master/location', 'location')->name('master.location');
         Route::get('/master/unit', 'unit')->name('master.unit');
         Route::get('/master/facility', 'facility')->name('master.facility');
-         Route::get('/master/product', 'product')->name('master.product');
-         Route::get('/insert/product', 'insert_product')->name('insert.product');
-         Route::get('/update/product', 'update_product')->name('update.product');
-         Route::get('/stock/opname', 'opname')->name('stock.opname');
+        Route::get('/master/product', 'product')->name('master.product');
+        Route::get('/master/brand', 'brand')->name('master.brand');
+        Route::get('/master/diskon', 'diskon')->name('master.diskon');
+        Route::get('/master/label', 'label')->name('master.label');
+        Route::get('/master/review', 'review')->name('master.review');
+        Route::get('/master/ukuran', 'ukuran')->name('master.ukuran');
+        Route::get('/master/taggar', 'taggar')->name('master.taggar');
+        Route::get('/master/fit', 'fit')->name('master.fit');
+        Route::get('/master/customer', 'customer')->name('master.customer');
+        Route::get('/master/flash-sale', 'flash_sale')->name('master.flash.sale');
+        Route::get('/master/induk-category', 'induk_category')->name('master.induk.category');
+        Route::get('/master/sub-category', 'sub_category')->name('master.sub.category');
+        Route::get('/insert/product', 'insert_product')->name('insert.product');
+        Route::get('/update/product', 'update_product')->name('update.product');
+        Route::get('/stock/opname', 'opname')->name('stock.opname');
     });
     // CMS CONTROLLER
     Route::controller(CmsController::class)->group(function () {

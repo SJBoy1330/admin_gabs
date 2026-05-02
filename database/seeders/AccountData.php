@@ -15,6 +15,12 @@ class AccountData extends Seeder
                 'role' => 1,
                 'email' => 'saka_devs@gmail.com',
                 'password' => Hash::make('Aa_1234%'),
+            ],
+            [
+                'name' => 'Admin',
+                'role' => 1,
+                'email' => 'admin@gmail.com',
+                'password' => Hash::make('Aa_1234%'),
             ]
         ]);
     }

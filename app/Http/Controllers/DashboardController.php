@@ -51,12 +51,21 @@ class DashboardController extends Controller
         return view('admin.dashboard.index', $data);
     }
 
-    public function contact()
+    public function antrian()
     {
-        $data['title'] = 'Daftar Kontak';
-        $data['subtitle'] = 'Manajemen Kontak';
+        $data['title'] = 'Antrian Transaksi';
+        $data['subtitle'] = 'Antrian transaksi masuk';
 
-        return view('admin.dashboard.contact', $data);
+        return view('admin.dashboard.antrian', $data);
+    }
+
+
+    public function tracking()
+    {
+        $data['title'] = 'Tracking Shipping';
+        $data['subtitle'] = 'Pemantauan nomor resi';
+
+        return view('admin.dashboard.tracking', $data);
     }
 
     public function report()

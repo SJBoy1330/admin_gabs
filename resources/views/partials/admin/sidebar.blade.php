@@ -17,22 +17,29 @@
     <!--end::Menu item-->
     <!--begin::Menu item-->
     <div class="menu-item">
-        <a href="antrian-transaksi.html" class="menu-link">
+        <a href="{{ route('antrian') }}" class="menu-link {{ ($segment1 == 'antrian') ? 'active' : ''}}">
         <span class="menu-title">Antrian Transaksi</span>
         </a>
     </div>
     <!--end::Menu item-->
     <!--begin::Menu item-->
-    <div class="menu-item">
+    <!-- <div class="menu-item">
         <a href="transaksi.html" class="menu-link">
         <span class="menu-title">Transaksi</span>
         </a>
-    </div>
+    </div> -->
     <!--end::Menu item-->
     <!--begin::Menu item-->
     <div class="menu-item">
-        <a href="tracking.html" class="menu-link">
+        <a href="{{ route('tracking') }}" class="menu-link {{ ($segment1 == 'tracking') ? 'active' : ''}}">
         <span class="menu-title">Tracking</span>
+        </a>
+    </div>
+    <!--end::Menu item-->
+     <!--begin::Menu item-->
+    <div class="menu-item">
+        <a href="{{ route('stock.opname') }}" class="menu-link {{ ($segment1 == 'stock' && $segment2 == 'opname') ? 'active' : ''}}">
+        <span class="menu-title">Stock Opname</span>
         </a>
     </div>
     <!--end::Menu item-->
@@ -49,7 +56,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="brand.html">
+            <a class="menu-link py-2 {{ ($segment1 == 'master' && $segment2 == 'brand') ? 'active' : '' }}" href="{{ route('master.brand') }}">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -61,7 +68,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="induk-kategori.html">
+            <a class="menu-link py-2 {{ ($segment1 == 'master' && $segment2 == 'induk-category') ? 'active' : '' }}" href="{{ route('master.induk.category') }}">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -73,90 +80,11 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="sub-kategori.html">
+            <a class="menu-link py-2 {{ ($segment1 == 'master' && $segment2 == 'sub-category') ? 'active' : '' }}" href="{{ route('master.sub.category') }}">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
             <span class="menu-title">Sub Kategori</span>
-            </a>
-            <!--end:Menu link-->
-        </div>
-        <!--end:Menu item-->
-        <!--begin:Menu item-->
-        <div class="menu-item">
-            <!--begin:Menu link-->
-            <a class="menu-link py-2" href="kategori-produk.html">
-            <span class="menu-bullet">
-                <span class="bullet bullet-dot"></span>
-            </span>
-            <span class="menu-title">Kategori Produk</span>
-            </a>
-            <!--end:Menu link-->
-        </div>
-        <!--end:Menu item-->
-        <!--begin:Menu item-->
-        <div class="menu-item">
-            <!--begin:Menu link-->
-            <a class="menu-link py-2" href="flash-sale.html">
-            <span class="menu-bullet">
-                <span class="bullet bullet-dot"></span>
-            </span>
-            <span class="menu-title">Flash Sale</span>
-            </a>
-            <!--end:Menu link-->
-        </div>
-        <!--end:Menu item-->
-        <div class="menu-item">
-            <!--begin:Menu link-->
-            <a class="menu-link py-2" href="diskon.html">
-            <span class="menu-bullet">
-                <span class="bullet bullet-dot"></span>
-            </span>
-            <span class="menu-title">Diskon</span>
-            </a>
-            <!--end:Menu link-->
-        </div>
-        <!--end:Menu item-->
-        <div class="menu-item">
-            <!--begin:Menu link-->
-            <a class="menu-link py-2" href="label-produk.html">
-            <span class="menu-bullet">
-                <span class="bullet bullet-dot"></span>
-            </span>
-            <span class="menu-title">Label Produk</span>
-            </a>
-            <!--end:Menu link-->
-        </div>
-        <!--end:Menu item-->
-        <div class="menu-item">
-            <!--begin:Menu link-->
-            <a class="menu-link py-2" href="review-produk.html">
-            <span class="menu-bullet">
-                <span class="bullet bullet-dot"></span>
-            </span>
-            <span class="menu-title">Review Produk</span>
-            </a>
-            <!--end:Menu link-->
-        </div>
-        <!--end:Menu item-->
-        <div class="menu-item">
-            <!--begin:Menu link-->
-            <a class="menu-link py-2" href="ukuran.html">
-            <span class="menu-bullet">
-                <span class="bullet bullet-dot"></span>
-            </span>
-            <span class="menu-title">Ukuran</span>
-            </a>
-            <!--end:Menu link-->
-        </div>
-        <!--end:Menu item-->
-        <div class="menu-item">
-            <!--begin:Menu link-->
-            <a class="menu-link py-2" href="tagar-produk.html">
-            <span class="menu-bullet">
-                <span class="bullet bullet-dot"></span>
-            </span>
-            <span class="menu-title">Tagar Produk</span>
             </a>
             <!--end:Menu link-->
         </div>
@@ -167,31 +95,88 @@
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
-            <span class="menu-title">Produk Wallet</span>
+            <span class="menu-title">Manajemen Produk</span>
+            </a>
+            <!--end:Menu link-->
+        </div>
+        <!--end:Menu item-->
+        <!--begin:Menu item-->
+        <div class="menu-item">
+            <!--begin:Menu link-->
+            <a class="menu-link py-2 {{ ($segment1 == 'master' && $segment2 == 'flash-sale') ? 'active' : '' }}" href="{{ route('master.flash.sale') }}">
+            <span class="menu-bullet">
+                <span class="bullet bullet-dot"></span>
+            </span>
+            <span class="menu-title">Flash Sale</span>
             </a>
             <!--end:Menu link-->
         </div>
         <!--end:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="fit-label.html">
+            <a class="menu-link py-2 {{ ($segment1 == 'master' && $segment2 == 'diskon') ? 'active' : '' }}" href="{{ route('master.diskon') }}">
+            <span class="menu-bullet">
+                <span class="bullet bullet-dot"></span>
+            </span>
+            <span class="menu-title">Diskon</span>
+            </a>
+            <!--end:Menu link-->
+        </div>
+        <!--end:Menu item-->
+        <div class="menu-item">
+            <!--begin:Menu link-->
+            <a class="menu-link py-2 {{ ($segment1 == 'master' && $segment2 == 'label') ? 'active' : '' }}" href="{{ route('master.label') }}">
+            <span class="menu-bullet">
+                <span class="bullet bullet-dot"></span>
+            </span>
+            <span class="menu-title">Label Produk</span>
+            </a>
+            <!--end:Menu link-->
+        </div>
+        <!--end:Menu item-->
+        <div class="menu-item">
+            <!--begin:Menu link-->
+            <a class="menu-link py-2 {{ ($segment1 == 'master' && $segment2 == 'review') ? 'active' : '' }}" href="{{ route('master.review') }}">
+            <span class="menu-bullet">
+                <span class="bullet bullet-dot"></span>
+            </span>
+            <span class="menu-title">Review Produk</span>
+            </a>
+            <!--end:Menu link-->
+        </div>
+        <!--end:Menu item-->
+        <div class="menu-item">
+            <!--begin:Menu link-->
+            <a class="menu-link py-2 {{ ($segment1 == 'master' && $segment2 == 'ukuran') ? 'active' : '' }}" href="{{ route('master.ukuran') }}">
+            <span class="menu-bullet">
+                <span class="bullet bullet-dot"></span>
+            </span>
+            <span class="menu-title">Ukuran</span>
+            </a>
+            <!--end:Menu link-->
+        </div>
+        <!--end:Menu item-->
+        <div class="menu-item">
+            <!--begin:Menu link-->
+            <a class="menu-link py-2 {{ ($segment1 == 'master' && $segment2 == 'taggar') ? 'active' : '' }}" href="{{ route('master.taggar') }}">
+            <span class="menu-bullet">
+                <span class="bullet bullet-dot"></span>
+            </span>
+            <span class="menu-title">Tagar Produk</span>
+            </a>
+            <!--end:Menu link-->
+        </div>
+        <!--end:Menu item-->
+        
+        <div class="menu-item">
+            <!--begin:Menu link-->
+            <a class="menu-link py-2 {{ ($segment1 == 'master' && $segment2 == 'fit') ? 'active' : '' }}" href="{{ route('master.fit') }}">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
             <span class="menu-title">Fit Label</span>
             </a>
             <!--end:Menu link-->
-            <div class="menu-item">
-            <!--begin:Menu link-->
-            <a class="menu-link py-2" href="manajemen-produk.html">
-                <span class="menu-bullet">
-                <span class="bullet bullet-dot"></span>
-                </span>
-                <span class="menu-title">Manajemen produk</span>
-            </a>
-            <!--end:Menu link-->
-            </div>
-            <!--end:Menu item-->
         </div>
         <!--end:Menu item-->
         </div>
@@ -211,7 +196,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="manajemen-customer.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Customer')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -223,7 +208,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="broadcast-newsletter.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Broadcast')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -235,7 +220,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="newsletter.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Newsletter')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -247,7 +232,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="alamat-tersimpan.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Alamat')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -259,49 +244,11 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="kontak.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Kontak')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
             <span class="menu-title">Kontak</span>
-            </a>
-            <!--end:Menu link-->
-        </div>
-        <!--end:Menu item-->
-        </div>
-        <!--end:Menu sub-->
-    </div>
-    <!--end::Menu item-->
-    <!--begin::Menu item-->
-    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-        <!--begin:Menu link-->
-        <span class="menu-link py-2">
-        <span class="menu-title">Promo Undian</span>
-        <span class="menu-arrow"></span>
-        </span>
-        <!--end:Menu link-->
-        <!--begin:Menu sub-->
-        <div class="menu-sub menu-sub-accordion" kt-hidden-height="163" style="display: none; overflow: hidden;">
-        <!--begin:Menu item-->
-        <div class="menu-item">
-            <!--begin:Menu link-->
-            <a class="menu-link py-2" href="master-undian.html">
-            <span class="menu-bullet">
-                <span class="bullet bullet-dot"></span>
-            </span>
-            <span class="menu-title">Master Undian</span>
-            </a>
-            <!--end:Menu link-->
-        </div>
-        <!--end:Menu item-->
-        <!--begin:Menu item-->
-        <div class="menu-item">
-            <!--begin:Menu link-->
-            <a class="menu-link py-2" href="voucher-undian.html">
-            <span class="menu-bullet">
-                <span class="bullet bullet-dot"></span>
-            </span>
-            <span class="menu-title">Voucher Undian</span>
             </a>
             <!--end:Menu link-->
         </div>
@@ -323,7 +270,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="kelola-halaman.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Halaman')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -335,7 +282,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="kategori-faq.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Kategori FAQ')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -347,7 +294,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="faq.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen FAQ')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -373,7 +320,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="manajemen-user.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen user')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -385,7 +332,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="role.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Role')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -411,7 +358,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="konfigurasi-umum.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Konfigurasi Umum')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -423,7 +370,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="hak-akses.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Hak Akses')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -435,7 +382,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="bank.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Bank')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -447,7 +394,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="banner-web.html">
+            <a class="menu-link py-2"onclick="showFeatureLocked('Manajemen Banner')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -459,7 +406,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="layanan.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Layanan')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -471,7 +418,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="banner-menu.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Banner Menu')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -483,7 +430,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="banner-promo.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Bannere Promo')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -495,7 +442,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="cabang-toko.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Cabang Toko')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -507,7 +454,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="kategori-video.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Kategori Video')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -519,7 +466,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="backup.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Manajemen Backup')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -545,7 +492,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="produk.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Laporan produk')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -557,7 +504,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="keuangan.html">
+            <a class="menu-link py-2" onclick="showFeatureLocked('Laporan Keuangan')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -569,7 +516,7 @@
         <!--begin:Menu item-->
         <div class="menu-item">
             <!--begin:Menu link-->
-            <a class="menu-link py-2" href="pengiriman.html">
+            <a class="menu-link py-2"onclick="showFeatureLocked('Laporan Pengiriman')">
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>
             </span>
@@ -589,3 +536,26 @@
 </div>
 <!--end::Aside-->
 
+<script>
+    function showFeatureLocked(pageName = "Halaman ini") {
+    Swal.fire({
+        title: 'Mohon Maaf!',
+        text: `${pageName} masih dalam tahap pengembangan dan belum bisa dibuka. Silahkan cek menu lainnya ya!`,
+        icon: 'info',
+        iconColor: '#009ef7', // Warna biru konsisten dengan dashboard
+        showCancelButton: false,
+        confirmButtonColor: '#009ef7',
+        confirmButtonText: 'Oke, Saya Mengerti',
+        buttonsStyling: true,
+        customClass: {
+            confirmButton: 'btn btn-primary px-10' // Pakai class bootstrap kamu
+        },
+        showClass: {
+            popup: 'animate__animated animate__fadeInUp animate__faster'
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutDown animate__faster'
+        }
+    });
+}
+</script>
