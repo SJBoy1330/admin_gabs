@@ -1,158 +1,148 @@
 @extends('layouts.admin.main')
 
 @push('styles')
+<style>
+    .card-stat:hover { transform: translateY(-5px); transition: 0.3s; cursor: pointer; }
+    .bg-light-primary-soft { background-color: #f1faff; }
+</style>
 @endpush
 
 @push('script')
-    <script src="{{ asset('assets/public/plugins/custom/fullcalendar/fullcalendar.bundle.js'); }}"></script>
-    <script src="{{ asset('assets/admin/js/modul/dashboard/calendar.js'); }}"></script>
+    <!-- Pakai Chart.js saja bro, lebih stabil buat alasan dummy -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 @endpush
 
-
 @section('content')
-<!--begin::Post-->
 <div class="post" id="kt_post">
-<div class="row mb-8">
-    <div class="col-xl-3">
-    <!--begin::Tiles Widget 11-->
-    <div class="card card-custom gutter-b" style="height: 150px">
-        <div class="card-body">
-        <i class="ki-duotone ki-basket-ok fs-3x">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-            <span class="path4"></span>
-        </i>
-        <h1 class="text-dark font-weight-bolder mt-3">200</h1>
-        <p class="text-muted font-size-lg mt-1">Produk -> <a href="" class="text-hover-primary font-weight-bold">Lihat Detail</a>
-            </a>
+    <!-- Top Stats -->
+    <div class="row mb-8">
+        @php
+            $stats = [
+                ['label' => 'Produk', 'val' => '3', 'icon' => 'ki-basket-ok', 'color' => 'primary', 'link' => 'master/product'],
+                ['label' => 'Pesanan', 'val' => '10', 'icon' => 'ki-basket', 'color' => 'success', 'link' => 'queue'],
+                ['label' => 'Customer', 'val' => '21', 'icon' => 'ki-people', 'color' => 'info', 'link' => 'master/customer'],
+                ['label' => 'Pengiriman', 'val' => '4', 'icon' => 'ki-delivery-time', 'color' => 'warning', 'link' => 'tracking']
+            ];
+        @endphp
+
+        @foreach($stats as $s)
+        <div class="col-xl-3 col-md-6">
+            <div class="card card-stat shadow-sm mb-5" style="height: 150px">
+                <div class="card-body">
+                    <i class="ki-duotone {{ $s['icon'] }} fs-3x text-{{ $s['color'] }}">
+                        <span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span>
+                    </i>
+                    <h1 class="text-dark fw-bolder mt-3">{{ $s['val'] }}</h1>
+                    <p class="text-muted fs-7 mt-1">{{ $s['label'] }} -> <a href="{{ url($s['link']) }}" class="fw-bold text-{{ $s['color'] }}">Lihat Detail</a></p>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row mb-8">
+        <div class="col-xl-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-header pt-5 border-0">
+                    <h3 class="card-title align-items-start flex-column">
+                        <span class="card-label fw-bold text-dark">Tren Penjualan Mingguan</span>
+                        <span class="text-muted mt-1 fw-semibold fs-7">Data statis 7 hari terakhir</span>
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <!-- Gunakan Canvas untuk Chart.js -->
+                    <canvas id="chart_sales_new" style="min-height: 350px;"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-header pt-5 border-0">
+                    <h3 class="card-title fw-bold">Proporsi Kategori</h3>
+                </div>
+                <div class="card-body d-flex justify-content-center">
+                    <canvas id="chart_cat_new" style="max-height: 350px;"></canvas>
+                </div>
+            </div>
         </div>
     </div>
-    <!--end::Tiles Widget 11-->
-    </div>
-    <div class="col-xl-3">
-    <!--begin::Tiles Widget 12-->
-    <div class="card card-custom gutter-b" style="height: 150px">
-        <div class="card-body">
-        <i class="ki-duotone ki-basket fs-3x">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-            <span class="path4"></span>
-        </i>
-        <h1 class="text-dark font-weight-bolder mt-3">0</h1>
-        <p class="text-muted font-size-lg mt-1">Pesanan -> <a href="" class="text-hover-primary font-weight-bold">Lihat Detail</a>
-            </a>
+
+    <!-- Info Table -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table align-middle table-row-dashed fs-6 gy-5">
+                            <thead>
+                                <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                                    <th>Status Inventori & Customer</th>
+                                    <th class="text-end">Jumlah</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-600 fw-semibold">
+                                <tr><td>Produk Hampir Habis</td><td class="text-end"><span class="badge badge-light-danger">100</span></td></tr>
+                                <tr><td>Produk Habis</td><td class="text-end"><span class="badge badge-light-danger">59</span></td></tr>
+                                <tr><td>Total Customer Reguler</td><td class="text-end"><span class="badge badge-light-primary">499</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <!--end::Tiles Widget 12-->
-    </div>
-    <div class="col-xl-3">
-    <!--begin::Tiles Widget 11-->
-    <div class="card card-custom gutter-b" style="height: 150px">
-        <div class="card-body">
-        <i class="ki-duotone ki-people fs-3x">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-            <span class="path4"></span>
-            <span class="path5"></span>
-        </i>
-        <h1 class="text-dark font-weight-bolder mt-3">500</h1>
-        <p class="text-muted font-size-lg mt-1">Customer -> <a href="" class="text-hover-primary font-weight-bold">Lihat Detail</a>
-            </a>
-        </div>
-    </div>
-    <!--end::Tiles Widget 11-->
-    </div>
-    <div class="col-xl-3">
-    <!--begin::Tiles Widget 12-->
-    <div class="card card-custom gutter-b" style="height: 150px">
-        <div class="card-body">
-        <i class="ki-duotone ki-delivery-time fs-3x">
-            <span class="path1"></span>
-            <span class="path2"></span>
-            <span class="path3"></span>
-            <span class="path4"></span>
-            <span class="path5"></span>
-        </i>
-        <h1 class="text-dark font-weight-bolder mt-3">0</h1>
-        <p class="text-muted font-size-lg mt-1">Pengiriman -> <a href="" class="text-hover-primary font-weight-bold">Lihat Detail</a>
-            </a>
-        </div>
-    </div>
-    <!--end::Tiles Widget 12-->
     </div>
 </div>
-<div class="row mb-8">
-    <div class="col-xl-8">
-    <div class="card card-bordered">
-        <div class="card-body">
-        <div style="height: 350px;"></div>
-        </div>
-    </div>
-    </div>
-    <div class="col-xl-4">
-    <div class="card card-bordered">
-        <div class="card-body">
-        <div style="height: 350px;"></div>
-        </div>
-    </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xl-8">
-    <div class="table-responsive">
-        <table class="table table-hover table-rounded table-striped border gy-7 gs-7">
-        <tbody>
-            <tr>
-            <td class="text-start">Produk Hampir Habis</td>
-            <td class="text-end">
-                <span class="badge badge-light-danger">100</span>
-            </td>
-            </tr>
-            <tr>
-            <td class="text-start">Produk Habis</td>
-            <td class="text-end">
-                <span class="badge badge-light-danger">59</span>
-            </td>
-            </tr>
-            <tr>
-            <td class="text-start">Kategori</td>
-            <td class="text-end">
-                <span class="badge badge-light-success">10</span>
-            </td>
-            </tr>
-            <tr>
-            <td class="text-start">Produk</td>
-            <td class="text-end">
-                <span class="badge badge-light-success">198</span>
-            </td>
-            </tr>
-            <tr>
-            <td class="text-start">Total Customer</td>
-            <td class="text-end">
-                <span class="badge badge-light-success">588</span>
-            </td>
-            </tr>
-            <tr>
-            <td class="text-start">Total Customer Reguler</td>
-            <td class="text-end">
-                <span class="badge badge-light-primary">499</span>
-            </td>
-            </tr>
-        </tbody>
-        </table>
-    </div>
-    </div>
-    <div class="col-xl-4">
-    <div class="card card-bordered">
-        <div class="card-body">
-        <div style="height: 350px;"></div>
-        </div>
-    </div>
-    </div>
-</div>
-</div>
-<!--end::Post-->
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Grafik 1: Line Chart Penjualan
+    const ctxSales = document.getElementById('chart_sales_new').getContext('2d');
+    new Chart(ctxSales, {
+        type: 'line',
+        data: {
+            labels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'],
+            datasets: [{
+                label: 'Penjualan (Rp)',
+                data: [4500000, 5900000, 4200000, 8100000, 5600000, 9500000, 12000000],
+                borderColor: '#009ef7',
+                backgroundColor: 'rgba(0, 158, 247, 0.1)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { beginAtZero: true, grid: { display: false } },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+
+    // Grafik 2: Pie Chart Kategori
+    const ctxCat = document.getElementById('chart_cat_new').getContext('2d');
+    new Chart(ctxCat, {
+        type: 'doughnut',
+        data: {
+            labels: ['Atasan', 'Bawahan', 'Outerwear', 'Aksesoris'],
+            datasets: [{
+                data: [40, 25, 20, 15],
+                backgroundColor: ['#009ef7', '#50cd89', '#ffc700', '#f1416c'],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { position: 'bottom' }
+            },
+            cutout: '70%'
+        }
+    });
+});
+</script>
 @endsection
